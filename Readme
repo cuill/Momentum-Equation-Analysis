@@ -1,0 +1,34 @@
+------------------------------------------------------------
+Calculate components(3D) of the momentum equation
+   - equation (2.20) and (2.21) in FVCOM manual (Jun3 2006)
+------------------------------------------------------------
+
+1. cal_acceleration.ncl
+   This script calculates term DDT.
+
+___________________________________________________________
+2. cal_momentum_1.ncl
+   - baroclinic pressure gradient
+   - coriolis force
+   - vertical advection
+  Subroutine included:
+     - dens2.ncl
+     - set_sigma.ncl
+     - baropg.f90
+
+-----------------------------------------------------------
+3. cal_momentum_2.ncl
+   - horizontal advection 
+   - horizontal diffusion
+   - barotropic pressure gradient
+  Subroutine included:
+     - tge.f90 (get elements information)
+     - adv_uv_edg_gcn.f90
+
+----------------------------------------------------------
+4. cal_vdif.ncl (See vertical diffusion term for details)
+   - vertical diffusion
+  Subroutine included:
+     - set_sigma.ncl
+  Comments: surface wind stress is not included, will add later.
+            U and V at time+1 are saved to netcdf in order to use uf and vf.
